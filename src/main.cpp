@@ -6,7 +6,7 @@
 const char *server = "api.thingspeak.com";
 
 int retries = 0;
-DHT dht(2, DHT22);
+DHT dht(0, DHT22);
 
 void ConnectToWifi()
 {
@@ -81,6 +81,21 @@ void loop()
 	float temperature = dht.readTemperature();
 	delay(100);
 	float humidity = dht.readHumidity();
+
+	if (ThingSpeakWithoutDHT22)
+	{
+		if (temperature == NAN)
+		{
+			temperature = random(15.0, 25.0);
+		}
+
+		if (humidity == NAN)
+		{
+			humidity = random(40.0, 60.0);
+		}
+
+		Serial.println("Fake DHT data!");
+	}
 
 	Serial.print("Temperature: ");
 	Serial.println(temperature);
