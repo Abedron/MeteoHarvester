@@ -84,15 +84,8 @@ void loop()
 
 	if (ThingSpeakWithoutDHT22)
 	{
-		if (temperature == NAN)
-		{
-			temperature = random(15.0, 25.0);
-		}
-
-		if (humidity == NAN)
-		{
-			humidity = random(40.0, 60.0);
-		}
+		temperature = random(15.0, 25.0);
+		humidity = random(40.0, 60.0);
 
 		Serial.println("Fake DHT data!");
 	}
