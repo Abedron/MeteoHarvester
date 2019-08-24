@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <ThingSpeak.h>
 #include <DHT.h>
@@ -48,7 +47,7 @@ void ConnectToWifi()
 
 void setup()
 {
-	Serial.begin(9600);
+	Serial.begin(115200);
 	dht.begin();
 	Serial.println("");
 	Serial.println("START");
@@ -83,21 +82,6 @@ void loop()
 	delay(100);
 	float humidity = dht.readHumidity();
 
-	if (ThingSpeakWithoutDHT22)
-	{
-		if (temperature == NAN)
-		{
-			temperature = random(15.0, 25.0);
-		}
-
-		if (humidity == NAN)
-		{
-			humidity = random(40.0, 60.0);
-		}
-
-		Serial.println("Fake DHT data!");
-	}
-
 	Serial.print("Temperature: ");
 	Serial.println(temperature);
 	Serial.print("Humidity: ");
@@ -105,6 +89,8 @@ void loop()
 
 	SendTeperature(temperature, humidity);
 
-	Serial.println("ESP8266 in sleep mode to ");
+	Serial.print("ESP8266 in sleep mode on ");
+	Serial.print(DeepSleepTime / 1e6);
+	Serial.print(" seconds");
 	ESP.deepSleep(DeepSleepTime, WAKE_RF_DEFAULT);
 }
