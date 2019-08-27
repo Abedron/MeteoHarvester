@@ -1,7 +1,7 @@
-const char *SSID = "****";
-const char *PSK = "****";
-const char *ApiKey = "****";
-unsigned long ChannelNumber = 0;
+const char* SSID = "****";
+const char* PSK = "****";
+const char* ApiKey = "****";
+unsigned long ChannelId = 0;
 
 // 15e6 is 15 seconds
 uint64_t DeepSleepTime = 15e6;

@@ -65,7 +65,7 @@ void SendTeperature(float temp, float hum)
 		ThingSpeak.begin(client);
 		ThingSpeak.setField(1, temp);
 		ThingSpeak.setField(2, hum);
-		ThingSpeak.writeFields(ChannelNumber, ApiKey);
+		ThingSpeak.writeFields(ChannelId, ApiKey);
 	}
 	else
 	{
@@ -84,8 +84,8 @@ void loop()
 
 	if (ThingSpeakWithoutDHT22)
 	{
-		temperature = random(15.0, 25.0);
-		humidity = random(40.0, 60.0);
+		temperature = random(70.0, 90.0);
+		humidity = random(110.0, 140.0);
 
 		Serial.println("Fake DHT sensor data!");
 	}
