@@ -47,7 +47,7 @@ void ConnectToWifi()
 
 void setup()
 {
-	Serial.begin(115200);
+	Serial.begin(9600);
 	dht.begin();
 	Serial.println("");
 	Serial.println("START");
@@ -87,7 +87,7 @@ void loop()
 		temperature = random(15.0, 25.0);
 		humidity = random(40.0, 60.0);
 
-		Serial.println("Fake DHT data!");
+		Serial.println("Fake DHT sensor data!");
 	}
 
 	Serial.print("Temperature: ");

@@ -1,6 +1,6 @@
 # MeteoHarvester
 
-PlatformIO project within (really bad IDE) VS Code.
+PlatformIO project within Visual Studio.
 
 ## Hardware pieces
 - Esp8266 01
@@ -9,7 +9,7 @@ PlatformIO project within (really bad IDE) VS Code.
 ### ESP8266 01
 You need make modify for DeepSleep mode. It is necessary for correct working and long term battery live. Yellow wire.
 
-![DeepSleep modification](Accessories/DTH22_bb.png?raw=true)
+![DeepSleep modification](Accessories/Fritzing/DTH22_bb.png?raw=true)
 
 ## Setup
 Before first run you must modify `src/Secret.h` for:
