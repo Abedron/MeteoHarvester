@@ -3,6 +3,8 @@
 #include <DHT.h>
 #include <Secret.h>
 
+ADC_MODE(ADC_VCC);
+
 const char *server = "api.thingspeak.com";
 
 int retries = 0;
@@ -52,9 +54,10 @@ void setup()
 	Serial.println("");
 	Serial.println("START");
 	ConnectToWifi();
+
 }
 
-void SendTeperature(float temp, float hum)
+void SendMeasurements(float temperature, float humidity, float voltage)
 {
 	WiFiClient client;
 
@@ -63,8 +66,9 @@ void SendTeperature(float temp, float hum)
 		Serial.println("Thingspeak connected ");
 
 		ThingSpeak.begin(client);
-		ThingSpeak.setField(1, temp);
-		ThingSpeak.setField(2, hum);
+		ThingSpeak.setField(1, temperature);
+		ThingSpeak.setField(2, humidity);
+		ThingSpeak.setField(3, voltage);
 		ThingSpeak.writeFields(ChannelId, ApiKey);
 	}
 	else
@@ -82,6 +86,8 @@ void loop()
 	delay(100);
 	float humidity = dht.readHumidity();
 
+	float voltage = ESP.getVcc() / 1024.0f;
+
 	if (ThingSpeakWithoutDHT22)
 	{
 		temperature = random(70.0, 90.0);
@@ -94,8 +100,10 @@ void loop()
 	Serial.println(temperature);
 	Serial.print("Humidity: ");
 	Serial.println(humidity);
+	Serial.print("Voltage: ");
+	Serial.println(voltage);
 
-	SendTeperature(temperature, humidity);
+	SendMeasurements(temperature, humidity, voltage);
 
 	Serial.print("ESP8266 in sleep mode on ");
 	Serial.print(DeepSleepTime / 1e6);
