@@ -62,6 +62,6 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Secret.h" />
+    <ClInclude Include="src\Config.h" />
   </ItemGroup>
 </Project>

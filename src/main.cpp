@@ -1,7 +1,7 @@
 #include <ESP8266WiFi.h>
 #include <ThingSpeak.h>
 #include <DHT.h>
-#include <Secret.h>
+#include <Config.h>
 
 ADC_MODE(ADC_VCC);
 

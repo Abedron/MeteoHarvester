@@ -14,7 +14,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Secret.h">
+    <ClInclude Include="src\Config.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
